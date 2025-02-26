@@ -122,6 +122,11 @@ def sum_digits(num):
     while (num > 0):
         sum+=num%10
         num//=10
-    return sum
-
+    return sum # 
+###############################################################################################
 sum_digits(123)
+
+#This is exponential time complexity, meaning the function grows very fast as 𝑛
+n increases.
+{3T(n-1) if n>0
+T(n) ={1, otherwise
