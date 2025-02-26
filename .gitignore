@@ -1,0 +1,9 @@
+# Ignore all Python files
+*.py
+
+# Allow only DSA-SLO-1.py to be tracked
+!DSA-SLO-1.py
+
+# Ignore VS Code settings and cache files
+.vscode/
+__pycache__/
