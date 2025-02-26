@@ -77,3 +77,18 @@ for i in range(0, len(L) // 2):  # Loop runs for half of the list
     L[other] = temp  # Complete the swap
 
 print(L)  # Output: [5, 4, 3, 2, 1]
+###############################################################################################
+def fact(n):
+    if n==1:
+        return n
+    else:
+        return n*fact(n-1) #  O(n) because it take linear calls for inputs
+
+print(fact(5))
+# ###############################################################################################
+def fib(n):
+    if n-1 or n==0:
+        return 1
+    else:
+        return fib(n-1)+fib(n-2)
+          #here the input is add output is multilplied hence its exponetial behaviour
