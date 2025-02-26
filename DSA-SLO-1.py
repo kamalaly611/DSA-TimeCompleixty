@@ -85,10 +85,43 @@ def fact(n):
         return n*fact(n-1) #  O(n) because it take linear calls for inputs
 
 print(fact(5))
-# ###############################################################################################
+###############################################################################################
 def fib(n):
     if n-1 or n==0:
         return 1
     else:
         return fib(n-1)+fib(n-2)
           #here the input is add output is multilplied hence its exponetial behaviour
+
+
+###############################################################################################
+def power(num):
+    if num < 1:
+        return 0
+    elif num ==1:
+        print(1)
+        return 1
+    else: # here if we see when input is added the f.calls are decreased means its log functions
+        prev =power(num//2)
+        curr = prev*2
+        print(curr)     #time-complexity is O(log)
+        return curr
+    
+###############################################################################################
+def mod(a,b):
+    if b <= 0:
+        return -1
+    div=a//b #time complextiy is constant becasue there are no operations and loops recursions
+    return a-div*b 
+
+mod(5.3)
+
+###############################################################################################
+def sum_digits(num):
+    sum = 0
+    while (num > 0):
+        sum+=num%10
+        num//=10
+    return sum
+
+sum_digits(123)
