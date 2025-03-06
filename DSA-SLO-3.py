@@ -16,6 +16,16 @@ class Mylist:
         self.A=self.__make_array(self.size)
     def __len__(self):
         return self.n 
+    
+    def __str__(self):
+        #[1,2,3]
+        result=''
+        for i in range(self.n):
+            result=result+str(self.A[i]) + ','
+        
+        return '[' + result[:-1] + ']'
+
+        
     def append(self,item): # if the size and n are equal than  the array will be resizes:::
          if self.n==self.size:
              #resize
@@ -44,8 +54,9 @@ L.append(1)
 L.append('hello')
 L.append(False)
 L.append(4.5)
+L.append('Hey')
 
-print(len(L))
+print(L)
     
 
         
