@@ -41,10 +41,11 @@ class Mylist:
          self.A[self.n] = item 
          self.n = self.n + 1
     def pop(self):
-        if self.n==0:
-            return '[]'
-        print(self.A[self.n-1 ])
-        self.n=self.n-1
+        if self.n == 0:
+            return '[]'  
+        popped_value = self.A[self.n - 1]
+        self.n -= 1
+        return popped_value  # Return instead of print
     def clear(self):
         self.n=0
         self.size=1
@@ -55,15 +56,31 @@ class Mylist:
         return 'ValueError -Not in List'
     def insert(self,pos,item):
         if self.n==self.size:
+            print('Yes size was full so resize happens')
             self._resize(self.size*2)
         
         for i in range(self.n,pos,-1):
             self.A[i]=self.A[i-1]
         
         self.A[pos]=item
-        self.n=self.n+1
-
+        self.n += 1
+    def remove(self,item):
+    # search and get pos
+        pos = self.find(item)
+        if type(pos) == int:
+      # delete
+            self.__delitem__(pos)
+        else:
+            return pos
     
+    def __delitem__(self,pos):
+        #delete 
+        if 0<=pos<=self.n:
+
+            for i in range(pos,self.n-1):
+                self.A[i]=self.A[i+1]
+        
+            self.n-=1
     
     def _resize(self,new_capcity):
         #crete a new array with  new capcity
@@ -93,7 +110,15 @@ print(L)
 #print(L.clear())
 print(L)
 print(L.find(4.5))        
-print(L.insert(0,0))
+L.insert(0,0)
 print(L)        
-print(L.insert(1,'Khalid'))
-print(L)        
+L.insert(1,'Khalid')
+print(L)
+L.__delitem__(2)  # Delete at index 2
+print("After Deletion at index 2:", L)
+L.__delitem__(300)  # Delete at index 2
+print(L)
+print('After the Remove Item')
+L.remove(4.5)
+print(L)
+ 
