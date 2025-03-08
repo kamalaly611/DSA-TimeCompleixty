@@ -81,6 +81,35 @@ class Mylist:
                 self.A[i]=self.A[i+1]
         
             self.n-=1
+    def sort(self):
+        try:
+            for i in range(self.n):  # Outer loop runs n times
+                for j in range(0, self.n - i - 1):  # Inner loop runs (n-i-1) times
+                    if self.A[j] > self.A[j + 1]:  # Compare adjacent elements
+                        self.A[j], self.A[j + 1] = self.A[j + 1], self.A[j]  # Swap elements
+        except TypeError:
+            return "TypeError: Cannot sort a list with mixed data types"
+    
+    def min(self):
+        self.sort()
+        #check
+        if isinstance(self.A[0], (int, float)):
+                return self.A[0]
+        else:
+            return "TypeError: Cannot sort a list with mixed data types"
+    def max(self):
+        self.sort()
+        if isinstance(self.A[self.n-1], (int, float)):
+            return self.A[self.n-1]
+        else:
+            return "TypeError: Cannot sort a list with mixed data types"
+        
+    def sum(self):
+        result=0
+        for i in range(self.n):
+            result=result+self.A[i] #[1,2,3,4,5]
+        return result
+
     
     def _resize(self,new_capcity):
         #crete a new array with  new capcity
@@ -120,5 +149,19 @@ L.__delitem__(300)  # Delete at index 2
 print(L)
 print('After the Remove Item')
 L.remove(4.5)
+L.remove('Khalid')
+L.remove('hello')
+L.remove(False)
+L.remove(False)
+L.append(5)
+L.append(4)
+L.append(3)
+L.append(2)
+L.append(1)
+
 print(L)
- 
+L.sort()
+print(L)
+print(L.min())
+print(L.max())
+print(L.sum())
