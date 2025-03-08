@@ -32,6 +32,11 @@ This repository contains Python implementations of various **time complexity** e
 ### 7️⃣ Fibonacci Sequence (Exponential Complexity 🚨)
 - **O(2ⁿ) complexity**: Why recursive Fibonacci is inefficient.
 
+### 8️⃣ Dynamic Arrays
+- Understanding **resizing strategy** and **amortized time complexity**.
+- How dynamic arrays achieve **O(1) average-time complexity** for `append()`.
+- Implementing a **custom dynamic array** in Python.
+
 ---
 
 ## ⏳ Time Complexity Summary
@@ -45,6 +50,7 @@ This repository contains Python implementations of various **time complexity** e
 | Triple Nested Loops    | O(n³)              |
 | List Reversal         | O(n)               |
 | Recursive Fibonacci    | O(2ⁿ) (Exponential) |
+| Dynamic Array Append   | O(1) (Amortized)   |
 
 ---
 
