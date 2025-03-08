@@ -91,12 +91,18 @@ class Mylist:
             return "TypeError: Cannot sort a list with mixed data types"
     
     def min(self):
-        self.sort()
-        #check
-        if isinstance(self.A[0], (int, float)):
-                return self.A[0]
-        else:
-            return "TypeError: Cannot sort a list with mixed data types"
+        if self.n == 0:
+            return "ValueError: List is empty" #[1,2,3,4,5]
+
+        if not all(isinstance(item, (int, float)) for item in self.A[:self.n]):
+            return "TypeError: Cannot find min in a list with mixed data types"
+
+        min_value = self.A[0]  # Assume the first element is the smallest
+        for i in range(1, self.n):
+            if self.A[i] < min_value: 
+                min_value = self.A[i]
+        return min_value
+
     def max(self):
         self.sort()
         if isinstance(self.A[self.n-1], (int, float)):
@@ -109,7 +115,14 @@ class Mylist:
         for i in range(self.n):
             result=result+self.A[i] #[1,2,3,4,5]
         return result
-
+    def extend(self, iterable):
+        for item in iterable:
+            self.append(item)
+    
+    def negativeIndexing(self, index):
+        if index < 0:  # Convert negative index to positive
+            
+            return self.A[self.n + index]
     
     def _resize(self,new_capcity):
         #crete a new array with  new capcity
@@ -165,3 +178,6 @@ print(L)
 print(L.min())
 print(L.max())
 print(L.sum())
+#L.extend([3, 4, 5])
+#print(L)  # Output: [1,2,3,4,5]
+print(L.negativeIndexing(-1))
