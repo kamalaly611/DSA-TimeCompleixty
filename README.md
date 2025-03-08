@@ -62,7 +62,7 @@ This repository contains Python implementations of various **time complexity** e
    ```
 2. Navigate to the folder:
    ```sh
-   cd DSA-TimeCompleixty
+   cd DynamicArrays.py
    ```
 3. Run the Python file:
    ```sh
