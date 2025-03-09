@@ -124,6 +124,19 @@ class Mylist:
             
             return self.A[self.n + index]
     
+    def slicing(self, start, end):
+            if start < 0:
+                start += self.n  # Convert negative start index
+            if end < 0:
+                end += self.n  # Convert negative end index
+
+            if start < 0 or end > self.n or start > end:
+                raise IndexError("Invalid slice indices")
+
+            return [self.A[i] for i in range(start, end)]
+
+
+    
     def _resize(self,new_capcity):
         #crete a new array with  new capcity
         B=self.__make_array(new_capcity)
@@ -181,3 +194,4 @@ print(L.sum())
 #L.extend([3, 4, 5])
 #print(L)  # Output: [1,2,3,4,5]
 print(L.negativeIndexing(-1))
+print(L.slicing(1, 3))
