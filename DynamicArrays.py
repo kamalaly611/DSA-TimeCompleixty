@@ -25,11 +25,20 @@ class Mylist:
         # what if we don't have empty string in intial so the last result will be
         #
         return '[' + result[:-1] + ']'
-    def __getitem__(self,index):
-        if 0<=index<self.n:
+    def __getitem__(self, index):
+        if isinstance(index, slice):
+            # Handle slicing
+            start, stop, step = index.indices(self.n)  # Get start, stop, step from slice object
+            sliced_list = Mylist()  # Create a new Mylist to store the sliced elements
+            for i in range(start, stop, step):
+                sliced_list.append(self.A[i])
+            return sliced_list
+        elif 0 <= index < self.n:
             return self.A[index]
+        elif -self.n <= index < 0:
+            return self.A[self.n + index]  # Handle negative indexing
         else:
-            return 'index is out of range'
+            return 'IndexError: Index out of range'
 
         
     def append(self,item): # if the size and n are equal than  the array will be resizes:::
@@ -124,18 +133,6 @@ class Mylist:
             
             return self.A[self.n + index]
     
-    def slicing(self, start, end):
-            if start < 0:
-                start += self.n  # Convert negative start index
-            if end < 0:
-                end += self.n  # Convert negative end index
-
-            if start < 0 or end > self.n or start > end:
-                raise IndexError("Invalid slice indices")
-
-            return [self.A[i] for i in range(start, end)]
-
-
     
     def _resize(self,new_capcity):
         #crete a new array with  new capcity
@@ -194,4 +191,8 @@ print(L.sum())
 #L.extend([3, 4, 5])
 #print(L)  # Output: [1,2,3,4,5]
 print(L.negativeIndexing(-1))
-print(L.slicing(1, 3))
+# Slicing examples
+print("Slice(1, 4):", L[1:4])  # Output: [2, 3, 4]
+print("Slice(None, None, -1):", L[::-1])  # Output: [5, 4, 3, 2, 1] (Reverse)
+print("Slice(-4, -1):", L[-4:-1])  # Output: [2, 3, 4]
+print("Slice(0, 5, 2):", L[0:5:2])  # Output: [1, 3, 5]
