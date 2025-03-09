@@ -18,10 +18,8 @@ class Mylist:
         return self.n 
     
     def __str__(self):
-        #[1,2,3]
-        result=''
-        for i in range(self.n):
-            result=result+str(self.A[i]) + ','# loop iterates through ith to n-1  
+        return "[" + ", ".join(str(self.A[i]) for i in range(self.n)) + "]"
+# loop iterates through ith to n-1  
         # what if we don't have empty string in intial so the last result will be
         #
         return '[' + result[:-1] + ']'
@@ -73,18 +71,17 @@ class Mylist:
         
         self.A[pos]=item
         self.n += 1
-    def remove(self,item):
-    # search and get pos
+    def remove(self, item):
         pos = self.find(item)
-        if type(pos) == int:
-      # delete
+        if isinstance(pos, int):  # Ensure valid index
             self.__delitem__(pos)
         else:
-            return pos
+            raise ValueError(f"{item} not found in list")
+
     
     def __delitem__(self,pos):
         #delete 
-        if 0<=pos<=self.n:
+        if 0<=pos<self.n:
 
             for i in range(pos,self.n-1):
                 self.A[i]=self.A[i+1]
@@ -132,7 +129,25 @@ class Mylist:
         if index < 0:  # Convert negative index to positive
             
             return self.A[self.n + index]
-    
+    def merge(self, other):
+        """
+        Merges the current Mylist with another Mylist.
+        :param other: Another Mylist object to merge with.
+        :return: A new Mylist containing elements from both lists.
+        """
+        # Create a new Mylist to store the merged result
+        merged_list = Mylist()
+
+        # Append all elements from the current list
+        for i in range(self.n):
+            merged_list.append(self.A[i])
+
+        # Append all elements from the other list
+        for i in range(other.n):
+            merged_list.append(other.A[i])
+
+        return merged_list
+        
     
     def _resize(self,new_capcity):
         #crete a new array with  new capcity
@@ -196,3 +211,11 @@ print("Slice(1, 4):", L[1:4])  # Output: [2, 3, 4]
 print("Slice(None, None, -1):", L[::-1])  # Output: [5, 4, 3, 2, 1] (Reverse)
 print("Slice(-4, -1):", L[-4:-1])  # Output: [2, 3, 4]
 print("Slice(0, 5, 2):", L[0:5:2])  # Output: [1, 3, 5]
+L2 = Mylist()
+L2.append(4)
+L2.append(5)
+L2.append(6)
+print(L2)
+
+merged = L.merge(L2)
+print("Merged List:", merged)  # Output: [1, 2, 3, 4, 5, 6]
