@@ -18,11 +18,18 @@ class Mylist:
         return self.n 
     
     def __str__(self):
-        return "[" + ", ".join(str(self.A[i]) for i in range(self.n)) + "]"
+        #return "[" + ", ".join(str(self.A[i]) for i in range(self.n)) + "]"
+        result = ''
+        for i in range(self.n):
+            result = result + str(self.A[i]) + ','
+
+        return '[' + result[:-1] + ']'
+
+ 
 # loop iterates through ith to n-1  
         # what if we don't have empty string in intial so the last result will be
         #
-        return '[' + result[:-1] + ']'
+
     def __getitem__(self, index):
         if isinstance(index, slice):
             # Handle slicing
@@ -169,8 +176,8 @@ L.append('hello')
 L.append(False)
 L.append(4.5)
 L.append('Hey')
-
-# print(L)
+print('Self.n==',L.n)
+print(L)
 # print(L[4])
 print(L.pop())
 print(L)    
