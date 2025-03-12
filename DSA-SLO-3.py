@@ -124,7 +124,31 @@ class DynamicArrays:
     def negativeindex(self,index):#[1,2,3,4,5]
         if index<0:
             return self.array[self.n + index]
-        
+    def __getitem__(self,index):
+        if isinstance(index,slice):
+            start,stop,step=index.indices(self.n)
+            new_list=DynamicArrays()
+            #iterate through valid slic range:
+            for i in range(start,stop,step):
+                new_list.append(self.array[i])
+            return new_list
+        # Handle Single Index  cases
+        elif 0<=index<self.n:
+            return self.array[index]
+        #Handle Negative index
+        elif -self.n <= index < 0:  
+            return self.array[self.n+index]
+        # Handke out of bounds index
+        else:
+            raise IndexError['Index is out of range']
+    
+    def merge(self,items):
+        if isinstance(items,list):
+             for item in items:
+                 self.append(item)
+    
+    
+    
 
 
 
@@ -163,3 +187,7 @@ print(arr.sum())
 arr.extend([6, 7, 8])
 print(arr)
 print(arr.negativeindex(-3))
+print(arr[0:2:1])
+print(arr[::-1])
+arr.merge([6,7,8])
+print(arr)
