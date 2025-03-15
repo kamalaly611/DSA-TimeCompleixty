@@ -48,6 +48,28 @@ class LinkdList:
             curr = curr.next
 
         return result[:-2]
+    
+    # These will append the new node at
+    def append(self,value):
+        new_node=Node(value)
+        
+        # if self.head==None:
+        #     #empty list
+        #     self.head=new_node
+        #     self.n+=1
+        #     return 
+        
+        curr=self.head
+        
+        while curr.next!=None:
+            curr=curr.next
+        
+        #you are at the last Node
+        curr.next=new_node
+        
+        #Increament self.n because a new value added
+        self.n+=1
+        
 
 
 
@@ -58,11 +80,14 @@ class LinkdList:
 
 L=LinkdList()
 
-print(len(L))
-L.insert_head(1)
-L.insert_head(2)
-L.insert_head(3)
-L.insert_head(4)
-print(len(L))
+#print(len(L))
+# L.insert_head(1)
+# L.insert_head(2)
+# L.insert_head(3)
+# L.insert_head(4)
+# #print(len(L))
+# print(L)
+L.append(5)
 print(L)
+
     
