@@ -16,6 +16,8 @@ class Node:
     def __init__(self,value):
         self.data=value
         self.next=None
+        # self.head = None
+        # self.tail = None  # Maintain tail pointer
 
 class LinkdList:
     def __init__(self):
@@ -53,11 +55,11 @@ class LinkdList:
     def append(self,value):
         new_node=Node(value)
         
-        # if self.head==None:
-        #     #empty list
-        #     self.head=new_node
-        #     self.n+=1
-        #     return 
+        if self.head==None:
+            #empty list
+            self.head=new_node
+            self.n+=1
+            return 
         
         curr=self.head
         
@@ -69,6 +71,14 @@ class LinkdList:
         
         #Increament self.n because a new value added
         self.n+=1
+
+        # new_node = Node(value)
+        # if self.head is None:
+        #     self.head = new_node
+        #     self.tail = new_node  # Update tail
+        # else:
+        #     self.tail.next = new_node  # Directly append
+        #     self.tail = new_node  # Update tai
         
 
 
@@ -81,13 +91,15 @@ class LinkdList:
 L=LinkdList()
 
 #print(len(L))
-# L.insert_head(1)
-# L.insert_head(2)
-# L.insert_head(3)
-# L.insert_head(4)
+L.insert_head(1)
+L.insert_head(2)
+L.insert_head(3)
+L.insert_head(4)
 # #print(len(L))
 # print(L)
 L.append(5)
+print(L)
+L.insert_head(5)
 print(L)
 
     
