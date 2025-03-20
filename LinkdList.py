@@ -28,6 +28,7 @@ class LinkdList:
         #Returns the number of Nodes in the linkdList:
 
         return self.n
+    #now Insering Head at  Begining
     def insert_head(self,value):
          #new node
          new_node=Node(value)
