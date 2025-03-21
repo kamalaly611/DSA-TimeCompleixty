@@ -80,6 +80,30 @@ class LinkdList:
         # else:
         #     self.tail.next = new_node  # Directly append
         #     self.tail = new_node  # Update tai
+    #4 → 3 → 2 → 1 → None
+    def insert_after(self,after,value):
+        
+        new_node=Node(value)
+        
+        curr=self.head
+        while curr != None:
+            if curr.data==after:
+                break
+            curr=curr.next
+        print(curr.data)
+        #case 1 break item found
+        if curr !=None:
+            new_node.next=curr.next
+            curr.next=new_node
+            
+        #case 2 loop run complete --> item ! found->curr->None
+        else:
+            return 'item Not found'
+        
+       
+
+
+
         
 
 
@@ -102,5 +126,6 @@ L.append(5)
 print(L)
 L.insert_head(5)
 print(L)
-
+L.insert_after(3,300)
+print(L)
     
