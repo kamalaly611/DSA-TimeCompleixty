@@ -82,15 +82,17 @@ class LinkdList:
         #     self.tail = new_node  # Update tai
     #4 → 3 → 2 → 1 → None
     def insert_after(self,after,value):
-        
+        #Head → [4] → [3] → [2] → [1] → None
+
         new_node=Node(value)
+        #[100] → None
         
-        curr=self.head
+        curr=self.head # curr=4
         while curr != None:
-            if curr.data==after:
+            if curr.data==after: #curr = 4 (not 3, move to next) --curr = 3 (match found, break loop)
                 break
             curr=curr.next
-        print(curr.data)
+        print(curr.data)     # so works perfectly for single list Node
         #case 1 break item found
         if curr !=None:
             new_node.next=curr.next
@@ -122,10 +124,9 @@ L.insert_head(3)
 L.insert_head(4)
 # #print(len(L))
 # print(L)
-L.append(5)
+#L.append(5)
 print(L)
-L.insert_head(5)
+#L.insert_head(5)
 print(L)
 L.insert_after(3,300)
 print(L)
-    
