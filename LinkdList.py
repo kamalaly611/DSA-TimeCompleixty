@@ -97,10 +97,15 @@ class LinkdList:
         if curr !=None:
             new_node.next=curr.next
             curr.next=new_node
+            self.n+=1
             
         #case 2 loop run complete --> item ! found->curr->None
         else:
             return 'item Not found'
+    
+    def clear(self):
+        self.head=None
+        self.n=0
         
        
 
@@ -129,4 +134,6 @@ print(L)
 #L.insert_head(5)
 print(L)
 L.insert_after(3,300)
+print(L)
+L.clear()
 print(L)
