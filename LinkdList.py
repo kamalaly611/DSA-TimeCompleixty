@@ -106,8 +106,28 @@ class LinkdList:
     def clear(self):
         self.head=None
         self.n=0
+    
+    def delHead(self):
+        if self.head==None:
+            return 'Empty LinkList'
+        self.head=self.head.next
+        self.n -= 1  # Decrement node count
         
-       
+    def pop(self):
+        if self.head==None:
+            return 'Empty Linkdlist' 
+
+
+        curr=self.head
+        if curr.next==None:
+            return self.delHead()
+      
+        while curr.next.next !=None:
+            curr=curr.next
+        #now curr.next at 2nd last Node 
+        curr.next=None #5->4->3->300->2->1->5->None:
+        self.n-=1
+
 
 
 
@@ -123,17 +143,20 @@ class LinkdList:
 L=LinkdList()
 
 #print(len(L))
-L.insert_head(1)
-L.insert_head(2)
-L.insert_head(3)
-L.insert_head(4)
-# #print(len(L))
-# print(L)
+# L.insert_head(1)
+# L.insert_head(2)
+# L.insert_head(3)
+# L.insert_head(4)
+#print(len(L))
+print(L)
 #L.append(5)
 print(L)
 #L.insert_head(5)
 print(L)
-L.insert_after(3,300)
+#L.insert_after(3,300)
 print(L)
-L.clear()
-print(L)
+# L.clear()
+# print(L)
+# print(L.delHead())
+print(L.pop())
+
